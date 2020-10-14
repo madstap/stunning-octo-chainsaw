@@ -1,7 +1,8 @@
 (ns brcode-repro.core-test
   (:require [clojure.test :refer :all]
-            [brcode-repro.core :refer :all]))
+            [clj-brcode.core :as pix]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(def code "00020104141234567890123426580014BR.GOV.BCB.PIX0136123e4567-e12b-12d1-a456-42665544000027300012BR.COM.OUTRO011001234567895204000053039865406123.455802BR5917NOME DO RECEBEDOR6008BRASILIA61087007490062190515RP12345678-201980390012BR.COM.OUTRO01190123.ABCD.3456.WXYZ6304AD38")
+
+(deftest br-code-test
+  (is (some? (pix/brcode->edn code))))
